@@ -45,7 +45,28 @@ int main()
 ```
 
 ### Bagian a
-Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai timestamp [YYYY-mm-dd_HH:ii:ss].
+Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai timestamp [YYYY-mm-dd_HH:ii:ss]. Berikut adalah programnya, terletak di dalam fungsi loop --> **While**
+```
+    pid_t child_id;
+    int status;
+    child_id = fork();
+    time_t raw;
+    struct tm *timeinfo;
+    char tanggal[40];
+    time(&raw);
+    timeinfo = localtime(&raw);
+    strftime(tanggal, sizeof(tanggal), "%Y-%m-%d_%H:%M:%S", timeinfo); // format penamaan folder sesuai dengan waktu saat folder tersebut berjalan
+        
+    if(child_id < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+    if(child_id == 0)
+    {
+        char *argv[4] = {"mkdir", "-p", tanggal, NULL};
+        execv("/bin/mkdir", argv);
+    }
+```
 
 ### Bagian b
 Setiap direktori yang sudah dibuat diisi dengan 10 gambar yang di download dari https://picsum.photos/, dimana setiap gambar akan di download setiap 5 detik. Setiap gambar yang di download akan diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss] dan gambar tersebut berbentuk persegi dengan ukuran (n%1000) + 50 pixel dimana n adalah detik Epoch Unix.
