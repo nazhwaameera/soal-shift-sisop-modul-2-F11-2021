@@ -459,7 +459,7 @@ void BCDE(char dest[])
 ```
 Pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. Kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. Untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum `;` yang pertama. Berikut adalah hasil run program nya :
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B" )
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B")
 
 ### Bagian c
 Setelah folder kategori berhasil dibuat, program ini akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
@@ -517,7 +517,7 @@ ren(data3, data);
 ```
 Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. Nama file dapat diganti dengan mv. Berikut adalah hasil run program soal 2c
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C" )
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C")
 
 ### Bagian d
 Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh : foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”. Untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
@@ -591,7 +591,7 @@ fclose(fptr);
 ```
 Berikut adalah hasil run program untuk soal E
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D" )
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D")
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program. Disini kami menggunakan **Program Daemon** yakni sebagai berikut.
