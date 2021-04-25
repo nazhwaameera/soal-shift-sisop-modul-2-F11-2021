@@ -187,7 +187,7 @@ else if(strcmp(argv[1], "-x") == 0)
 fprintf(kill, "rm killer.sh\n");
 fclose(kill);
 ```
-**NOTE :** untuk no 3 d dan 3 e diletak di dalam satu fungsi void yang sama, yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
+**NOTE :** Untuk no 3 d dan 3 e diletak di dalam satu fungsi void yang sama, yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
 ```
 // untuk menjalankan argumen -z dan -x
 killer(argv, (int)getpid());
@@ -196,5 +196,4 @@ Berikut jika dijalankan dengan argumen -x dan setelah itu menjalankan bash kille
 <img width="570" alt="Screen Shot 2021-04-25 at 14 47 34" src="https://user-images.githubusercontent.com/74484044/115985257-32925500-a5d5-11eb-84e9-a643d47ff924.png">
 <img width="624" alt="Screen Shot 2021-04-25 at 14 45 17" src="https://user-images.githubusercontent.com/74484044/115985199-eba45f80-a5d4-11eb-8129-d01d64ea9de7.png">
 
-Program yang tadinya masih dalam bentuk direktori, akan menyelesaikan proses nya dahulu hingga menjadi bentuk zip, walaupun kita sudah menjalankan bash.killer.sh
-Sedangkan jika kita jalankan dengan argumen -z, maka tidak ada hasil karena program akan langsung berhenti memproses.
+Program yang tadinya masih dalam bentuk direktori, akan menyelesaikan proses nya dahulu hingga menjadi bentuk zip, walaupun kita sudah menjalankan bash killer.sh. Sedangkan jika kita jalankan dengan argumen -z, maka tidak ada hasil karena program akan langsung berhenti memproses.
