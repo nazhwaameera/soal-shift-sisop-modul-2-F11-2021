@@ -192,3 +192,5 @@ fclose(kill);
 // untuk menjalankan argumen -z dan -x
 killer(argv, (int)getpid());
 ```
+Berikut jika dijalankan dengan argumen -x dan setelah itu menjalankan bash killer.sh
+<img width="624" alt="Screen Shot 2021-04-25 at 14 45 17" src="https://user-images.githubusercontent.com/74484044/115985199-eba45f80-a5d4-11eb-8129-d01d64ea9de7.png">
