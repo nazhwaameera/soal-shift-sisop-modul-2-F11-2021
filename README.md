@@ -264,6 +264,418 @@ Berikut adalah foto hasil eksekusi program.
 Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi program saat pembuatan yang ternyata dikarenakan 3 hal. Pertama, kesalahan peletakkan program yang kana dieksekusi sehingga program mengeksekusi command exit(EXIT_FAILURE) sebelum program dapat berjalan; kedua, kesalahan input tanggal saat proses set date dilakukan sehingga program tidak tereksekusi sama sekali; ketiga, kesalahan link yang menyebabkan proses download gagal.
 
 ## Soal 2
+	Loba bekerja di sebuah petshop terkenal, suatu saat dia mendapatkan zip yang berisi banyak sekali foto peliharaan dan Ia diperintahkan untuk mengkategorikan foto-foto peliharaan tersebut. Loba merasa kesusahan melakukan pekerjaanya secara manual, apalagi ada kemungkinan ia akan diperintahkan untuk melakukan hal yang sama. Kamu adalah teman baik Loba dan Ia meminta bantuanmu untuk membantu pekerjaannya.
+```
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <syslog.h>
+#include <string.h>
+#include <wait.h>
+#include <dirent.h>
+```
+int main()
+{
+    pid_t child_id;
+    int kons;
+    child_id=fork();
+    char source[100] = "/home/rayhan12/soal2/pets.zip";
+    char dest[100] = "/home/rayhan12/soal2/petshop";
+    if(child_id<0)
+    {
+        exit(EXIT_FAILURE);
+    }
+ 
+    if(child_id == 0)
+    {
+        unzip(dest,source);
+        BCDE(dest);
+    }
+ 
+    else{
+        
+       while ((wait(&kons))>0);
+       
+    }
+    
+    
+    return 0;
+}
+```
+### A.
+Pertama-tama program perlu mengextract zip yang diberikan ke dalam folder “/home/[user]/modul2/petshop”. Karena bos Loba teledor, dalam zip tersebut bisa berisi folder-folder yang tidak penting, maka program harus bisa membedakan file dan folder sehingga dapat memproses file yang seharusnya dikerjakan dan menghapus folder-folder yang tidak dibutuhkan.
+pada soal a disuruh untuk mengextract file pets.zip. file yang diextract hanyalah file dengan format .jpg.
+
+```
+void makedire(char base[])
+{
+    pid_t child_id;
+    int fl;
+ 
+    child_id=fork();
+ 
+    if(child_id==0)
+    {
+         char *folder[]={"mkdir","-p",base,NULL};
+        execv("/bin/mkdir", folder);
+    }
+ 
+    else
+    {
+        while ((wait(&fl))>0);
+    }
+}
+
+void unzippers(char source[],char dest[])
+{
+    pid_t child_id;
+    int fl;
+ 
+    child_id=fork();
+ 
+    if(child_id==0)
+    {
+         char *unzipper[] = {"unzip","-q",source,"-x","*/*","-d",dest,NULL};
+        execv("/bin/unzip", unzipper);
+    }
+ 
+    else
+    {
+        while ((wait(&fl))>0);
+    }
+}
+
+void unzip(char dest[],char source[])
+{   
+    int fl;
+    pid_t child_id;
+    child_id = fork();
+    
+    
+ 
+    if(child_id<0)
+    {
+       exit(EXIT_FAILURE); 
+    }
+ 
+    if (child_id==0)
+    {
+        
+       
+        makedire(dest);
+    }
+ 
+    else {
+        while ((wait(&fl))>0);
+        
+        unzippers(source,dest);
+        
+    }
+}
+```
+pada dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada
+
+### B.
+Foto peliharaan perlu dikategorikan sesuai jenis peliharaan, maka kamu harus membuat folder untuk setiap jenis peliharaan yang ada dalam zip. Karena kamu tidak mungkin memeriksa satu-persatu, maka program harus membuatkan folder-folder yang dibutuhkan sesuai dengan isi zip.
+Contoh: Jenis peliharaan kucing akan disimpan dalam “/petshop/cat”, jenis peliharaan kura-kura akan disimpan dalam “/petshop/turtle”.
+
+```
+void makedire(char base[])
+{
+    pid_t child_id;
+    int fl;
+ 
+    child_id=fork();
+ 
+    if(child_id==0)
+    {
+         char *folder[]={"mkdir","-p",base,NULL};
+        execv("/bin/mkdir", folder);
+    }
+ 
+    else
+    {
+        while ((wait(&fl))>0);
+    }
+}
+
+void BCDE(char dest[])
+{
+    pid_t child;
+    child= fork();
+    
+    
+    char path[100] ;
+    strcpy(path,dest);
+    int kons;
+    if(child<0)
+    {
+       exit(EXIT_FAILURE); 
+    }
+ 
+    if (child==0)
+    {
+    DIR *dp;
+    
+    dp = opendir(path);
+        if (dp != NULL)
+        {
+            struct dirent *ep;
+            while((ep = readdir(dp))!= NULL)
+            {   
+                if(ep->d_type == DT_REG)
+                {
+                    
+                    char *sem1,*sem2,*sem3,*sem4;
+                    
+                    char *namapic=cutter(ep->d_name);
+                    
+                    char copy1[100];
+                    char copy2[100];
+                    char copy3[100];
+                    
+                    char data2[100];
+                    char data3[100];
+                   
+                    char hewan[100];
+                    char nama[100];
+                    
+                    char umur[100];
+                    for(sem1=strtok_r(namapic,"_",&sem3) ; sem1!=NULL; sem1=strtok_r(NULL,"_",&sem3))
+                    {
+                        int i;
+                       
+                        char data[100];
+                        strcpy(data,dest);
+                        strcat(data,"/");
+                        strcpy(copy1, ep->d_name);
+                        // printf("%s\n",copy1);
+
+                        strcpy(data2, data);
+                        
+
+                        strcpy(data3, data);
+                        
+
+                        strcpy(copy2, ep->d_name);
+                        
+
+                        strcpy(copy3, ep->d_name);
+                       
+                        int flag=0;
+                        for(sem2=strtok_r(sem1,";",&sem4);sem2!=NULL; sem2=strtok_r(NULL,";",&sem4))
+                            {
+                                if(flag==0)
+                                strcpy(hewan,sem2);
+                                if(flag==1)
+                                strcpy(nama,sem2);
+                                if(flag==2)
+                                strcpy(umur,sem2);
+                                
+                                flag++;
+                            }
+                        
+ 
+                        //2b
+                        strcat(data,hewan);
+                        
+                        makedire(data);
+                        
+                        
+                
+```
+pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum
+`;` yang pertama.
+berikut adalah hasil run program
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B" )
+
+###C.
+Setelah folder kategori berhasil dibuat, programmu akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
+Contoh: “/petshop/cat/joni.jpg”. 
+
+```C
+void cpy(char source[],char dest[])
+{
+    pid_t child_id;
+    int fl;
+ 
+    child_id=fork();
+ 
+    if(child_id==0)
+    {
+         char *movetofolder[]={"cp","-r", source, dest, NULL};
+                        execv("/bin/cp",movetofolder);
+    }
+ 
+    else
+    {
+        while ((wait(&fl))>0);
+    }
+}
+
+void ren(char pertama[],char terakhir[])
+{
+    pid_t child_id;
+    int fl;
+ 
+    child_id=fork();
+ 
+    if(child_id==0)
+    {
+        char *rename[]={"mv",pertama,terakhir,NULL};
+        execv("/bin/mv",rename);
+    }
+ 
+    else
+    {
+        while ((wait(&fl))>0);
+    }
+}
+
+
+```
+```C
+ //2c
+
+                        
+                        strcat(nama,".jpg");
+                        
+                        strcat(data2,copy2);
+                        
+                    
+                        cpy(data2,data);
+                        
+                        //rename
+                        strcpy(data3,data);
+                        
+
+                        strcat(data3,"/");
+                        
+
+                        strcat(data3,copy2);
+                        
+
+                        strcat(data,"/");
+                        
+                        strcat(data,nama);
+                        
+                        ren(data3,data);
+```
+untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. nama file dapat diganti dengan mv.
+
+berikut adalah hasil run program soal 2c
+
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C" )
+
+###D.
+Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh: foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”.
+untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
+
+```C
+    for(sem1=strtok_r(namapic,"_",&sem3) ; sem1!=NULL; sem1=strtok_r(NULL,"_",&sem3))
+                    {
+                        int i;
+                       
+                        char data[100];
+                        strcpy(data,dest);
+                        strcat(data,"/");
+                        strcpy(copy1, ep->d_name);
+                        // printf("%s\n",copy1);
+
+                        strcpy(data2, data);
+                        
+
+                        strcpy(data3, data);
+                        
+
+                        strcpy(copy2, ep->d_name);
+                        
+
+                        strcpy(copy3, ep->d_name);
+                       
+                        int flag=0;
+                        for(sem2=strtok_r(sem1,";",&sem4);sem2!=NULL; sem2=strtok_r(NULL,";",&sem4))
+                            {
+                                if(flag==0)
+                                strcpy(hewan,sem2);
+                                if(flag==1)
+                                strcpy(nama,sem2);
+                                if(flag==2)
+                                strcpy(umur,sem2);
+                                
+                                flag++;
+                            }
+                        
+ 
+                        //2b
+                        strcat(data,hewan);
+                        
+                        makedire(data);
+                        
+                        
+                        char textdir[100];
+                        
+                        stpcpy(textdir,data);
+                        strcat(textdir,"/keterangan.txt");
+                        char namatext[100];
+                        
+                        strcpy(namatext,nama);
+                    
+                        //2c
+                        
+                        strcat(nama,".jpg");
+                        
+                        strcat(data2,copy2);
+                        
+                    
+                        cpy(data2,data);
+                        
+                        //rename
+                        strcpy(data3,data);
+                        
+
+                        strcat(data3,"/");
+                        
+
+                        strcat(data3,copy2);
+                        
+
+                        strcat(data,"/");
+                        
+                        strcat(data,nama);
+                        
+                        ren(data3,data);
+                        
+```
+
+###E.
+Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur semua peliharaan dalam folder tersebut. Format harus sesuai contoh. jadi setiap kali pembacaan nama file akan dimasukkan ke suatu variabel untuk menyimpan nama dan menyimpan directory.
+
+```C
+    
+                        char textdir[100];
+                        
+                        stpcpy(textdir,data);
+                        strcat(textdir,"/keterangan.txt");
+                        char namatext[100];
+                        
+                        strcpy(namatext,nama);
+
+  			char  isi[300];
+                        
+                        sprintf(isi,"nama : %s \numur :%s tahun \n \n",namatext,umur);
+                       
+                        FILE *fptr=fopen(textdir,"a");
+                        fputs(isi,fptr);
+                        fclose(fptr);
+```
+berikut adalah hasil run program untuk soal E
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D" )
+
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program. Disini kami menggunakan **Program Daemon** yakni sebagai berikut.
