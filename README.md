@@ -252,6 +252,7 @@ int main()
 }
 ```
 Berikut adalah foto hasil eksekusi program.
+
 ![nazhwa punya](https://user-images.githubusercontent.com/74484044/115996728-b0bd1e80-a60a-11eb-9a50-b1bfdc42433f.png)
 
 Gambar 1. Eksekusi program pertama, set date 2021-04-09 16:21:59
