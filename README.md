@@ -8,7 +8,10 @@ Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya p
 Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg.
 
 ### Bagian b
-Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga.
+Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga. Berikut adalah linknya.
+```
+char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
+```
 
 ### Bagian c
 Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilakukan extract setelah file didownload serta..
