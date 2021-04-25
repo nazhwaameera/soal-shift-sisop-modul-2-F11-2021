@@ -7,6 +7,42 @@ Repository Modul 2 Kelompok F11
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program.
+```
+int main()
+{
+    pid_t pid, sid;
+    pid = fork();
+    
+    if(pid < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+    if(pid > 0)
+    {
+        exit(EXIT_SUCCESS);
+    }
+    
+    umask(0);
+    sid = setsid();
+    
+    if(sid < 0)
+    {
+        exit(EXIT_FAILURE);
+    }
+    
+    // untuk menjalankan argumen -z dan -x
+    killer(argv, (int)getpid());
+    
+    close(STDIN_FILENO);
+    close(STDOUT_FILENO);
+    close(STDERR_FILENO);
+    
+    while(1)
+    {
+        sleep(40);
+    }
+}
+```
 
 ### Bagian a
 Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai timestamp [YYYY-mm-dd_HH:ii:ss].
