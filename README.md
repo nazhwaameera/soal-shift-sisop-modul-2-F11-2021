@@ -14,7 +14,8 @@ Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal
 5.	Membuat program berjalan otomatis pada 09 April 16:22
 6.	Membuat zip dari ketiga folder yang ada dan menghapus folder terkait
 
-Dari apa yang sudah saya kerjakan sebelumnya, terdapat beberapa perubahan yakni.
+Dari apa yang sudah saya kerjakan sebelumnya, terdapat beberapa perubahan yakni :
+
 •	Link download ketiga file yang dibutuhkan menjadi
 ```
 char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
