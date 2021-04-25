@@ -368,7 +368,7 @@ void unzip(char dest[],char source[])
     }
 }
 ```
-Dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. Fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada
+Dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. Fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada.
 
 ### Bagian b
 Foto peliharaan perlu dikategorikan sesuai jenis peliharaan, maka kamu harus membuat folder untuk setiap jenis peliharaan yang ada dalam zip. Karena kamu tidak mungkin memeriksa satu-persatu, maka program harus membuatkan folder-folder yang dibutuhkan sesuai dengan isi zip. Contoh: Jenis peliharaan kucing akan disimpan dalam “/petshop/cat”, jenis peliharaan kura-kura akan disimpan dalam “/petshop/turtle”.
@@ -459,7 +459,7 @@ void BCDE(char dest[])
 ```
 Pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. Kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. Untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum `;` yang pertama. Berikut adalah hasil run program nya :
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B")
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B" )
 
 ### Bagian c
 Setelah folder kategori berhasil dibuat, program ini akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
@@ -515,9 +515,9 @@ strcat(data, "/");
 strcat(data, nama);
 ren(data3, data);
 ```
-Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. Nama file dapat diganti dengan mv. Berikut adalah hasil run program soal 2c
+Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. Nama file dapat diganti dengan mv. Berikut adalah hasil run program soal 2c :
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C")
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C" )
 
 ### Bagian d
 Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh : foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”. Untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
@@ -589,9 +589,9 @@ FILE *fptr = fopen(textdir, "a");
 fputs(isi, fptr);
 fclose(fptr);
 ```
-Berikut adalah hasil run program untuk soal E
+Berikut adalah hasil run program untuk soal 2e :
 
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D")
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D" )
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program. Disini kami menggunakan **Program Daemon** yakni sebagai berikut.
