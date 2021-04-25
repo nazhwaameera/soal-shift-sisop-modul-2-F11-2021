@@ -106,6 +106,35 @@ Setelah direktori telah terisi dengan 10 gambar, program tersebut akan membuat s
 char kata[50] = "Download Success";
 char word;
 ```
+```
+// caesar cipher
+for(int i = 0; i < strlen(kata); i++)
+{
+    word = kata[i];
+    if(word == ' ')
+    {
+        continue;
+    }
+    if(word >= 'a' && word <= 'z')
+    {
+        word += 5;
+        if(word > 'z')
+        {
+            word = word - 'z' + 'a' - 1;
+        }
+        kata[i] = word;
+    }
+    else if(word >= 'A' && word <= 'Z')
+    {
+        word += 5;
+        if(word > 'Z')
+        {
+            word = word - 'Z' + 'A' - 1;
+        }
+        kata[i] = word;
+    }
+}
+```
 
 ### Bagian d
 Program tersebut akan men-generate sebuah program “Killer” yang executable, dimana program tersebut akan menterminasi semua proses program yang sedang berjalan dan akan menghapus dirinya sendiri setelah program dijalankan. Karena Ranora menyukai sesuatu hal yang baru, maka Ranora memiliki ide untuk program “Killer” yang dibuat nantinya harus merupakan **program bash**.
