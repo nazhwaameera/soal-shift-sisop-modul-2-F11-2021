@@ -308,7 +308,7 @@ int main()
     return 0;
 }
 ```
-### A.
+### A
 Pertama-tama program perlu mengextract zip yang diberikan ke dalam folder “/home/[user]/modul2/petshop”. Karena bos Loba teledor, dalam zip tersebut bisa berisi folder-folder yang tidak penting, maka program harus bisa membedakan file dan folder sehingga dapat memproses file yang seharusnya dikerjakan dan menghapus folder-folder yang tidak dibutuhkan.
 pada soal a disuruh untuk mengextract file pets.zip. file yang diextract hanyalah file dengan format .jpg.
 
@@ -381,7 +381,7 @@ void unzip(char dest[],char source[])
 ```
 pada dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada
 
-### B.
+### B
 Foto peliharaan perlu dikategorikan sesuai jenis peliharaan, maka kamu harus membuat folder untuk setiap jenis peliharaan yang ada dalam zip. Karena kamu tidak mungkin memeriksa satu-persatu, maka program harus membuatkan folder-folder yang dibutuhkan sesuai dengan isi zip.
 Contoh: Jenis peliharaan kucing akan disimpan dalam “/petshop/cat”, jenis peliharaan kura-kura akan disimpan dalam “/petshop/turtle”.
 
@@ -495,7 +495,7 @@ pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. 
 berikut adalah hasil run program
 ![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B" )
 
-###C.
+### C.
 Setelah folder kategori berhasil dibuat, programmu akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
 Contoh: “/petshop/cat/joni.jpg”. 
 
@@ -573,7 +573,7 @@ berikut adalah hasil run program soal 2c
 
 ![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C" )
 
-###D.
+### D.
 Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh: foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”.
 untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
 
@@ -654,7 +654,7 @@ untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ 
                         
 ```
 
-###E.
+### E.
 Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur semua peliharaan dalam folder tersebut. Format harus sesuai contoh. jadi setiap kali pembacaan nama file akan dimasukkan ke suatu variabel untuk menyimpan nama dan menyimpan directory.
 
 ```C
