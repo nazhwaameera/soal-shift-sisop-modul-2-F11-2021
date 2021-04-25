@@ -68,7 +68,7 @@ Setelah itu, diakhir program while, kami meletakkan fungsi sebagai berikut agar 
 ```
 sleep(40); // program berjalan setiap 40 detik
 ```
-Berikut adalah hasil direktori yang sudah terbentuk dengan nama sesuai dengan timestamp, dan juga akan terzip otomatis jika gambar di dalamnya sudah mencapai total 10 gambar.
+Berikut adalah hasil direktori yang sudah terbentuk dengan nama sesuai format timestamp, dan juga akan terzip otomatis jika gambar di dalamnya sudah mencapai total 10 gambar.
 <img width="706" alt="Screen Shot 2021-04-25 at 14 25 01" src="https://user-images.githubusercontent.com/74484044/115984642-6ae46400-a5d2-11eb-9273-04e741210e10.png">
 
 ### Bagian b
