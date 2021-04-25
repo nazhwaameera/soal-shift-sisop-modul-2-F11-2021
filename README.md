@@ -2,25 +2,9 @@
 Repository Modul 2 Kelompok F11
 
 ## Soal 1
-Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya pacar, namun sudah putus sebelum pacarana. Ketika dia galau memikirkan mantan, ia selalu menonton sebuah video untuk menghilangkan kesedihannya. Di lain hal, Steven anak yang tidak amat sangat super membenci matkul sisop, beberapa jam setelah diputus oleh pacarnya dia menemukan wanita lain bernama Stevany, namun Stevany berkebalikan dengan Steven karena menyukai sisop. Steven ingin terlihat jago matkul sisop demi menarik perhatian Stevany. Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal-hal ayng disukai Stevany. Steven ingin isi zipnya menjadi rapi dengan membuat folder masing-masing sesuai ekstensi.
+Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya pacar, namun sudah putus sebelum pacarana. Ketika dia galau memikirkan mantan, ia selalu menonton sebuah video untuk menghilangkan kesedihannya. Di lain hal, Steven anak yang tidak amat sangat super membenci matkul sisop, beberapa jam setelah diputus oleh pacarnya dia menemukan wanita lain bernama Stevany, namun Stevany berkebalikan dengan Steven karena menyukai sisop. Steven ingin terlihat jago matkul sisop demi menarik perhatian Stevany.
 
-### Bagian a
-Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg. 
-
-### Bagian b
-Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga.
-
-### Bagian c
-Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilakukan extract setelah file didownload serta..
-
-### Bagian d
-..memindahkannya ke dalam folder yang telah dibuat (hanya file yang dimasukkan).
-
-### Bagian e
-Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany.
-
-### Bagian f
-Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
+Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal-hal yang disukai Stevany. Steven ingin isi zipnya menjadi rapi dengan membuat folder masing-masing sesuai ekstensi. **(a)** Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg, **(b)** untuk music Steven mendownloadnya dari link di bawah, film dari link di bawah lagi, dan foto dari link di bawahnya juga. **(c)** Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilakukan extract setelah file didownload serta **(d)** memindahkannya ke dalam folder yang telah dibuat (hanya file yang dimasukkan). **(e)** Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany. **(f)** Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
 
 **NOTE :** Dari soal di atas dapat diketahui bahwa kita diminta untuk:
 1.	Membuat folder dengan nama Musyik, Fylm, dan Pyoto
