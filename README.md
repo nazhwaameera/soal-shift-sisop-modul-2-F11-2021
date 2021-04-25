@@ -265,6 +265,7 @@ Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi progra
 
 ## Soal 2
 	Loba bekerja di sebuah petshop terkenal, suatu saat dia mendapatkan zip yang berisi banyak sekali foto peliharaan dan Ia diperintahkan untuk mengkategorikan foto-foto peliharaan tersebut. Loba merasa kesusahan melakukan pekerjaanya secara manual, apalagi ada kemungkinan ia akan diperintahkan untuk melakukan hal yang sama. Kamu adalah teman baik Loba dan Ia meminta bantuanmu untuk membantu pekerjaannya.
+
 ```
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -277,7 +278,7 @@ Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi progra
 #include <string.h>
 #include <wait.h>
 #include <dirent.h>
-```
+
 int main()
 {
     pid_t child_id;
