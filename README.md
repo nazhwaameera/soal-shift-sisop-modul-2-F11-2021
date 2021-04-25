@@ -68,6 +68,8 @@ Setelah itu, diakhir program while, kami meletakkan fungsi sebagai berikut agar 
 ```
 sleep(40); // program berjalan setiap 40 detik
 ```
+Berikut adalah hasil direktori yang sudah terbentuk dengan nama sesuai dengan timestamp, dan juga akan terzip otomatis jika gambar di dalamnya sudah mencapai total 10 gambar.
+<img width="706" alt="Screen Shot 2021-04-25 at 14 25 01" src="https://user-images.githubusercontent.com/74484044/115984642-6ae46400-a5d2-11eb-9273-04e741210e10.png">
 
 ### Bagian b
 Setiap direktori yang sudah dibuat diisi dengan 10 gambar yang di download dari https://picsum.photos/, dimana setiap gambar akan di download setiap 5 detik. Setiap gambar yang di download akan diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss] dan gambar tersebut berbentuk persegi dengan ukuran (n % 1000) + 50 pixel dimana n adalah detik Epoch Unix.
