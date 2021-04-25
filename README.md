@@ -171,6 +171,7 @@ if(strcmp(argv[1], "-z") == 0)
 { 
     fprintf(kill, "killall -9 soal3\n");
 }
+
 // arg -x untuk kill proses utama --> pid
 else if(strcmp(argv[1], "-x") == 0)
 {
@@ -181,3 +182,4 @@ else if(strcmp(argv[1], "-x") == 0)
 fprintf(kill, "rm killer.sh\n");
 fclose(kill);
 ```
+**NOTE :** untuk no 3 d dan 3 e diletak di dalam satu fungsi void yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
