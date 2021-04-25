@@ -5,7 +5,16 @@ Repository Modul 2 Kelompok F11
 Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya pacar, namun sudah putus sebelum pacarana. Ketika dia galau memikirkan mantan, ia selalu menonton sebuah video untuk menghilangkan kesedihannya. Di lain hal, Steven anak yang tidak amat sangat super membenci matkul sisop, beberapa jam setelah diputus oleh pacarnya dia menemukan wanita lain bernama Stevany, namun Stevany berkebalikan dengan Steven karena menyukai sisop. Steven ingin terlihat jago matkul sisop demi menarik perhatian Stevany. Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal-hal ayng disukai Stevany. Steven ingin isi zipnya menjadi rapi dengan membuat folder masing-masing sesuai ekstensi.
 
 ### Bagian a
-Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg.
+Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg. 
+**NOTE :** Adanya penambahan variable ```char *dwnld[ ]``` yang menyimpan format nama file yang akan di download. Format nama ini dibutuhkan untuk proses extract nantinya.
+```
+char *dwnld[] = {"mp3.zip", "mp4.zip", "jpg.zip"};
+```
+Penambahan variable di atas berdampak juga pada perubahan penulisan line yang menggunakan variable terkait, seperti perintah exec untuk extract, yakni sebagai berikut.
+```
+char *argv[] = {"unzip", dwnld[i], NULL};
+execv("/usr/bin/unzip", argv);
+```
 
 ### Bagian b
 Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga. Berikut adalah linknya.
