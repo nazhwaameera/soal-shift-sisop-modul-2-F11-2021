@@ -74,6 +74,30 @@ sleep(40); // program berjalan setiap 40 detik
 
 ### Bagian b
 Setiap direktori yang sudah dibuat diisi dengan 10 gambar yang di download dari https://picsum.photos/, dimana setiap gambar akan di download setiap 5 detik. Setiap gambar yang di download akan diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss] dan gambar tersebut berbentuk persegi dengan ukuran (n%1000) + 50 pixel dimana n adalah detik Epoch Unix.
+```
+for(i = 1; i <= 10; i++)
+{
+    time_t raw2;
+    struct tm *timeinfo2;
+    char tanggal2[40];
+    time(&raw2);
+    timeinfo2 = localtime(&raw2);
+    strftime(tanggal2, sizeof(tanggal2), "%Y-%m-%d_%H:%M:%S", timeinfo2); // format penamaan file gambar yang telah di download sesuai dengan waktu pada saat mendownload
+                    
+    char alamat[50];
+    sprintf(alamat, "https://picsum.photos/%ld", ((raw2 % 1000) + 50)); // link gambar beserta ukurannya
+    pid_t child_id_3;
+    child_id_3 = fork();
+                    
+    if(child_id_3 == 0)
+    {
+        chdir(tanggal);
+        char *f[] = {"wget", "-bq", alamat, "-O" , tanggal2, NULL};
+        execv("/usr/bin/wget", f);
+    }
+    sleep(5); // gambar di download tiap 5 detik
+}
+```
 
 ### Bagian c
 Setelah direktori telah terisi dengan 10 gambar, program tersebut akan membuat sebuah file “status.txt”, dimana didalamnya berisi pesan “Download Success” yang terenkripsi dengan teknik Caesar Cipher dan dengan shift 5. Caesar Cipher adalah Teknik enkripsi sederhana yang dimana dapat melakukan enkripsi string sesuai dengan shift/key yang kita tentukan. Misal huruf “A” akan dienkripsi dengan shift 4 maka akan menjadi “E”. Dan setelah file tersebut dibuat, direktori akan di zip dan direktori akan di delete, sehingga menyisakan hanya file zip saja.
