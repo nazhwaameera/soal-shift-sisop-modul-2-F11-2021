@@ -135,6 +135,20 @@ for(int i = 0; i < strlen(kata); i++)
     }
 }
 ```
+```
+// untuk membuat file bernama status.txt
+char file[100];
+sprintf(file, "%s/status.txt", tanggal);
+FILE *status = fopen(file, "w");
+fputs(kata, status);
+fclose(status);
+                
+// untuk mengubah folder menjadi bentuk zip sekaligus menghapus folder tersebut
+char zip[50];
+sprintf(zip, "%s.zip", tanggal);
+char *argv2[5] = {"zip", "-rm", zip, tanggal, NULL};
+execv("/usr/bin/zip", argv2);
+```
 
 ### Bagian d
 Program tersebut akan men-generate sebuah program “Killer” yang executable, dimana program tersebut akan menterminasi semua proses program yang sedang berjalan dan akan menghapus dirinya sendiri setelah program dijalankan. Karena Ranora menyukai sesuatu hal yang baru, maka Ranora memiliki ide untuk program “Killer” yang dibuat nantinya harus merupakan **program bash**.
