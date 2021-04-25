@@ -16,7 +16,7 @@ Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal
 
 Dari apa yang sudah saya kerjakan sebelumnya, terdapat beberapa perubahan yakni :
 
-•	Link download ketiga file yang dibutuhkan menjadi
+•	Link download ketiga file yang dibutuhkan menjadi :
 ```
 char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
 ```
@@ -266,8 +266,6 @@ Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi progra
 
 ## Soal 2
 Loba bekerja di sebuah petshop terkenal, suatu saat dia mendapatkan zip yang berisi banyak sekali foto peliharaan dan Ia diperintahkan untuk mengkategorikan foto-foto peliharaan tersebut. Loba merasa kesusahan melakukan pekerjaanya secara manual, apalagi ada kemungkinan ia akan diperintahkan untuk melakukan hal yang sama. Kamu adalah teman baik Loba dan Ia meminta bantuanmu untuk membantu pekerjaannya.
-
-
 ```C
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -309,10 +307,10 @@ int main()
     return 0;
 }
 ```
-### A
+### Bagian a
 Pertama-tama program perlu mengextract zip yang diberikan ke dalam folder “/home/[user]/modul2/petshop”. Karena bos Loba teledor, dalam zip tersebut bisa berisi folder-folder yang tidak penting, maka program harus bisa membedakan file dan folder sehingga dapat memproses file yang seharusnya dikerjakan dan menghapus folder-folder yang tidak dibutuhkan.
-pada soal a disuruh untuk mengextract file pets.zip. file yang diextract hanyalah file dengan format .jpg.
 
+Pada soal a, kita diminta untuk mengextract file pets.zip. file yang diextract hanyalah file dengan format .jpg.
 ```C
 void makedire(char base[])
 {
@@ -380,12 +378,10 @@ void unzip(char dest[],char source[])
     }
 }
 ```
-pada dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada
+Dalam fungsi unzip terdapat pemanggilan fungsi unzippers dan makedir. Fungsi unzippers sebagai ngeunzip file zip dan makedir untuk membuat folder petshop jika tidak ada
 
-### B
-Foto peliharaan perlu dikategorikan sesuai jenis peliharaan, maka kamu harus membuat folder untuk setiap jenis peliharaan yang ada dalam zip. Karena kamu tidak mungkin memeriksa satu-persatu, maka program harus membuatkan folder-folder yang dibutuhkan sesuai dengan isi zip.
-Contoh: Jenis peliharaan kucing akan disimpan dalam “/petshop/cat”, jenis peliharaan kura-kura akan disimpan dalam “/petshop/turtle”.
-
+### Bagian b
+Foto peliharaan perlu dikategorikan sesuai jenis peliharaan, maka kamu harus membuat folder untuk setiap jenis peliharaan yang ada dalam zip. Karena kamu tidak mungkin memeriksa satu-persatu, maka program harus membuatkan folder-folder yang dibutuhkan sesuai dengan isi zip. Contoh: Jenis peliharaan kucing akan disimpan dalam “/petshop/cat”, jenis peliharaan kura-kura akan disimpan dalam “/petshop/turtle”.
 ```C
 void makedire(char base[])
 {
@@ -491,15 +487,13 @@ void BCDE(char dest[])
                         
                 
 ```
-pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum
-`;` yang pertama.
-berikut adalah hasil run program
+Pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. Kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. Untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum `;` yang pertama. Berikut adalah hasil run program nya :
+
 ![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2b.JPG?raw=true "2B" )
 
-### C.
-Setelah folder kategori berhasil dibuat, programmu akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
+### Bagian c
+Setelah folder kategori berhasil dibuat, program ini akan memindahkan foto ke folder dengan kategori yang sesuai dan di rename dengan nama peliharaan.
 Contoh: “/petshop/cat/joni.jpg”. 
-
 ```C
 void cpy(char source[],char dest[])
 {
@@ -568,16 +562,12 @@ void ren(char pertama[],char terakhir[])
                         
                         ren(data3,data);
 ```
-untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. nama file dapat diganti dengan mv.
-
-berikut adalah hasil run program soal 2c
+Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. Nama file dapat diganti dengan mv. Berikut adalah hasil run program soal 2c
 
 ![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2C.JPG?raw=true "2C" )
 
-### D.
-Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh: foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”.
-untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
-
+### Bagian d
+Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh : foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”. Untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
 ```C
     for(sem1=strtok_r(namapic,"_",&sem3) ; sem1!=NULL; sem1=strtok_r(NULL,"_",&sem3))
                     {
@@ -655,12 +645,10 @@ untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ 
                         
 ```
 
-### E.
-Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur semua peliharaan dalam folder tersebut. Format harus sesuai contoh. jadi setiap kali pembacaan nama file akan dimasukkan ke suatu variabel untuk menyimpan nama dan menyimpan directory.
-
+### Bagian e
+Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur semua peliharaan dalam folder tersebut. Format harus sesuai contoh. Jadi setiap kali pembacaan nama file akan dimasukkan ke suatu variabel untuk menyimpan nama dan menyimpan directory.
 ```C
-    
-                        char textdir[100];
+	char textdir[100];
                         
                         stpcpy(textdir,data);
                         strcat(textdir,"/keterangan.txt");
@@ -676,9 +664,9 @@ Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur 
                         fputs(isi,fptr);
                         fclose(fptr);
 ```
-berikut adalah hasil run program untuk soal E
-![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D" )
+Berikut adalah hasil run program untuk soal E
 
+![alt text](https://github.com/EEB12/Tugas_socket/blob/main/2D.JPG?raw=true "2D" )
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program. Disini kami menggunakan **Program Daemon** yakni sebagai berikut.
