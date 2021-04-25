@@ -20,7 +20,7 @@ Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilak
 Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany.
 
 ### Bagian f
-Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete(sehingga hanya menyisakan .zip)
+Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
 
 **NOTE :** Dari soal di atas dapat diketahui bahwa kita diminta untuk:
 1.	Membuat folder dengan nama Musyik, Fylm, dan Pyoto
