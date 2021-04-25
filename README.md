@@ -93,7 +93,7 @@ for(i = 1; i <= 10; i++) // total gambar yang di download adalah 10 gambar
     {
         chdir(tanggal);
         char *f[] = {"wget", "-bq", alamat, "-O" , tanggal2, NULL};
-        execv("/usr/bin/wget", f);
+        execv("/usr/bin/wget", f); // agar berhasil mendownload dan menyimpan gambar ke dalam folder
     }
     sleep(5); // gambar di download tiap 5 detik
 }
