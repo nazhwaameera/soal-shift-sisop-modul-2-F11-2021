@@ -30,9 +30,6 @@ int main()
         exit(EXIT_FAILURE);
     }
     
-    // untuk menjalankan argumen -z dan -x
-    killer(argv, (int)getpid());
-    
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
     close(STDERR_FILENO);
