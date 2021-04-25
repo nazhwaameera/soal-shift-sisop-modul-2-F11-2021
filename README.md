@@ -183,3 +183,7 @@ fprintf(kill, "rm killer.sh\n");
 fclose(kill);
 ```
 **NOTE :** untuk no 3 d dan 3 e diletak di dalam satu fungsi void yang sama, yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
+```
+// untuk menjalankan argumen -z dan -x
+killer(argv, (int)getpid());
+```
