@@ -6,21 +6,9 @@ Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya p
 
 ### Bagian a
 Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg. 
-**NOTE :** Adanya penambahan variable ```char *dwnld[ ]``` yang menyimpan format nama file yang akan di download. Format nama ini dibutuhkan untuk proses extract nantinya.
-```
-char *dwnld[] = {"mp3.zip", "mp4.zip", "jpg.zip"};
-```
-Penambahan variable di atas berdampak juga pada perubahan penulisan line yang menggunakan variable terkait, seperti perintah exec untuk extract, yakni sebagai berikut.
-```
-char *argv[] = {"unzip", dwnld[i], NULL};
-execv("/usr/bin/unzip", argv);
-```
 
 ### Bagian b
-Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga. Berikut adalah linknya.
-```
-char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
-```
+Untuk music Steven mendownloadnya dari link dibawah ini, film dari link dibawahnya lagi, dan foto dari link dibawahnya juga.
 
 ### Bagian c
 Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilakukan extract setelah file didownload serta..
@@ -30,20 +18,6 @@ Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilak
 
 ### Bagian e
 Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany.
-```
-void function1()
-{
-	int i;
-	createDir();
-	for(i = 1; i <= 3; i++)
-	{
-		Download(i);
-		extractZip(i);
-		move(i);
-	}
-}
-```
-Pada versi function1() di atas, fork tidak dilakukan di setiap stepnya seperti pada versi function1() yang sebelumnya. Program semata melakukan iterasi sebanyak 3 kali dan melakukan 3 proses di setiap iterasinya.
 
 ### Bagian f
 Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
