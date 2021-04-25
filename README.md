@@ -149,6 +149,10 @@ sprintf(zip, "%s.zip", tanggal);
 char *argv2[5] = {"zip", "-rm", zip, tanggal, NULL};
 execv("/usr/bin/zip", argv2);
 ```
+Karena menggunakan **Caesar Cipher** juga dengan shift 5 maka kalimat "Download Success" akan berubah menjadi "Itbsqtfi Xzhhjxx". Dimana 5 huruf setelah huruf D adalah I, 5 huruf setelah huruf o adalah t, dan seterusnya.
+```
+word += 5;
+```
 
 ### Bagian d
 Program tersebut akan men-generate sebuah program “Killer” yang executable, dimana program tersebut akan menterminasi semua proses program yang sedang berjalan dan akan menghapus dirinya sendiri setelah program dijalankan. Karena Ranora menyukai sesuatu hal yang baru, maka Ranora memiliki ide untuk program “Killer” yang dibuat nantinya harus merupakan **program bash**.
