@@ -164,3 +164,20 @@ fprintf(kill, "#/bin/bash\n");
 
 ### Bagian e
 Program utama yang dibuat Ranora nantinya harus dapat dijalankan dalam dua mode. Untuk mengaktifkan mode pertama, program harus dijalankan dengan argumen -z, dan ketika dijalankan dalam mode pertama, program utama akan langsung menghentikan semua operasinya Ketika program Killer dijalankan. Sedangkan untuk mengaktifkan mode kedua, program harus dijalankan dengan argumen -x, dan ketika dijalankan dalam mode kedua, program utama akan berhenti namun membiarkan proses di setiap direktori yang masih berjalan hingga selesai (Direktori yang sudah dibuat akan mendownload gambar sampai selesai dan membuat file txt, lalu zip dan delete direktori).
+```
+// 3e
+// arg -z untuk menghentikan semua operasi
+if(strcmp(argv[1], "-z") == 0)
+{ 
+    fprintf(kill, "killall -9 soal3\n");
+}
+// arg -x untuk kill proses utama --> pid
+else if(strcmp(argv[1], "-x") == 0)
+{
+    fprintf(kill, "kill -9 %d\n", pid);
+}
+
+// delete folder setelah selesai di zip
+fprintf(kill, "rm killer.sh\n");
+fclose(kill);
+```
