@@ -182,4 +182,4 @@ else if(strcmp(argv[1], "-x") == 0)
 fprintf(kill, "rm killer.sh\n");
 fclose(kill);
 ```
-**NOTE :** untuk no 3 d dan 3 e diletak di dalam satu fungsi void yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
+**NOTE :** untuk no 3 d dan 3 e diletak di dalam satu fungsi void yang sama, yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
