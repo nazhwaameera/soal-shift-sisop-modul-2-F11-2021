@@ -253,6 +253,10 @@ int main()
 ```
 Berikut adalah foto hasil eksekusi program.
 
+Gambar 1. Eksekusi program pertama, set date 2021-04-09 16:21:59
+
+Gambar 2. Eksekusi program kedua, set date 2021-04-09 22:21:59
+Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi program saat pembuatan yang ternyata dikarenakan 3 hal. Pertama, kesalahan peletakkan program yang kana dieksekusi sehingga program mengeksekusi command exit(EXIT_FAILURE) sebelum program dapat berjalan; kedua, kesalahan input tanggal saat proses set date dilakukan sehingga program tidak tereksekusi sama sekali; ketiga, kesalahan link yang menyebabkan proses download gagal.
 
 ## Soal 2
 
