@@ -17,23 +17,23 @@ Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal
 Dari apa yang sudah saya kerjakan sebelumnya, terdapat beberapa perubahan yakni :
 
 •	Link download ketiga file yang dibutuhkan menjadi :
-```
+```C
 char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
 ```
 Perubahan ini dilakukan karena format yang sebelumnya salah (proses download tidak berhasil dilakukan).
 
 •	Penambahan variable ```char *dwnld[ ]``` yang menyimpan format nama file yang akan didownload. Format nama ini dibutuhkan untuk proses extract nantinya.
-```
+```C
 char *dwnld[] = {"mp3.zip", "mp4.zip", "jpg.zip"};
 ```
 Penambahan variable di atas berdampak juga pada perubahan penulisan line yang menggunakan variable terkait, seperti perintah exec untuk extract.
-```
+```C
 char *argv[] = {"unzip", dwnld[i], NULL};
 execv("/usr/bin/unzip", argv);
 ```
 
 •	Penyederhanaan fungsi function1( ) yang dipanggil 6 jam sebelum jam ulang tahun Stevany menjadi :
-```
+```C
 void function1()
 {
 	int i;
@@ -49,7 +49,8 @@ void function1()
 Pada versi function1() di atas, fork tidak dilakukan di setiap stepnya seperti pada versi function1() yang sebelumnya. Program semata melakukan iterasi sebanyak 3 kali dan melakukan 3 proses di setiap iterasinya.
 
 Dengan menggabungkan semua perubahan yang telah dilakukan, dihasikan program seperti berikut.
-```#include <time.h>
+```C
+#include <time.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -283,27 +284,24 @@ int main()
 {
     pid_t child_id;
     int kons;
-    child_id=fork();
+    child_id = fork();
     char source[100] = "/home/rayhan12/soal2/pets.zip";
     char dest[100] = "/home/rayhan12/soal2/petshop";
+    
     if(child_id<0)
     {
         exit(EXIT_FAILURE);
     }
- 
     if(child_id == 0)
     {
         unzip(dest,source);
         BCDE(dest);
     }
- 
-    else{
+    else
+    {
         
        while ((wait(&kons))>0);
-       
     }
-    
-    
     return 0;
 }
 ```
@@ -317,14 +315,13 @@ void makedire(char base[])
     pid_t child_id;
     int fl;
  
-    child_id=fork();
+    child_id = fork();
  
-    if(child_id==0)
+    if(child_id == 0)
     {
-         char *folder[]={"mkdir","-p",base,NULL};
+    	char *folder[] = {"mkdir","-p",base,NULL};
         execv("/bin/mkdir", folder);
     }
- 
     else
     {
         while ((wait(&fl))>0);
@@ -336,14 +333,13 @@ void unzippers(char source[],char dest[])
     pid_t child_id;
     int fl;
  
-    child_id=fork();
+    child_id = fork();
  
-    if(child_id==0)
+    if(child_id == 0)
     {
-         char *unzipper[] = {"unzip","-q",source,"-x","*/*","-d",dest,NULL};
+    	char *unzipper[] = {"unzip","-q",source,"-x","*/*","-d",dest,NULL};
         execv("/bin/unzip", unzipper);
     }
- 
     else
     {
         while ((wait(&fl))>0);
@@ -354,27 +350,21 @@ void unzip(char dest[],char source[])
 {   
     int fl;
     pid_t child_id;
+    
     child_id = fork();
     
-    
- 
-    if(child_id<0)
+    if(child_id < 0)
     {
        exit(EXIT_FAILURE); 
     }
- 
-    if (child_id==0)
+    if (child_id == 0)
     {
-        
-       
-        makedire(dest);
+    	makedire(dest);
     }
- 
-    else {
-        while ((wait(&fl))>0);
-        
+    else 
+    {
+    	while((wait(&fl)) > 0);
         unzippers(source,dest);
-        
     }
 }
 ```
@@ -388,104 +378,84 @@ void makedire(char base[])
     pid_t child_id;
     int fl;
  
-    child_id=fork();
+    child_id = fork();
  
-    if(child_id==0)
+    if(child_id == 0)
     {
-         char *folder[]={"mkdir","-p",base,NULL};
+    	char *folder[] = {"mkdir","-p",base,NULL};
         execv("/bin/mkdir", folder);
     }
- 
     else
     {
-        while ((wait(&fl))>0);
+        while ((wait(&fl)) > 0);
     }
 }
 
 void BCDE(char dest[])
 {
     pid_t child;
-    child= fork();
-    
-    
+    child = fork();
     char path[100] ;
-    strcpy(path,dest);
+    strcpy(path, dest);
     int kons;
-    if(child<0)
+    
+    if(child < 0)
     {
        exit(EXIT_FAILURE); 
     }
- 
-    if (child==0)
+    if(child == 0)
     {
-    DIR *dp;
-    
-    dp = opendir(path);
-        if (dp != NULL)
+    	DIR *dp;
+	dp = opendir(path);
+        if(dp != NULL)
         {
-            struct dirent *ep;
-            while((ep = readdir(dp))!= NULL)
-            {   
-                if(ep->d_type == DT_REG)
-                {
+		struct dirent *ep;
+		while((ep = readdir(dp)) != NULL)
+		{  
+			if(ep->d_type == DT_REG)
+			{
+				char *sem1,*sem2,*sem3,*sem4;
+				char *namapic = cutter(ep->d_name);
                     
-                    char *sem1,*sem2,*sem3,*sem4;
+                    		char copy1[100];
+                   	 	char copy2[100];
+				char copy3[100];
                     
-                    char *namapic=cutter(ep->d_name);
-                    
-                    char copy1[100];
-                    char copy2[100];
-                    char copy3[100];
-                    
-                    char data2[100];
-                    char data3[100];
+                    		char data2[100];
+                    		char data3[100];
                    
-                    char hewan[100];
-                    char nama[100];
+                    		char hewan[100];
+                   	 	char nama[100];
                     
-                    char umur[100];
-                    for(sem1=strtok_r(namapic,"_",&sem3) ; sem1!=NULL; sem1=strtok_r(NULL,"_",&sem3))
-                    {
-                        int i;
-                       
-                        char data[100];
-                        strcpy(data,dest);
-                        strcat(data,"/");
-                        strcpy(copy1, ep->d_name);
-                        // printf("%s\n",copy1);
-
-                        strcpy(data2, data);
-                        
-
-                        strcpy(data3, data);
-                        
-
-                        strcpy(copy2, ep->d_name);
-                        
-
-                        strcpy(copy3, ep->d_name);
-                       
-                        int flag=0;
-                        for(sem2=strtok_r(sem1,";",&sem4);sem2!=NULL; sem2=strtok_r(NULL,";",&sem4))
-                            {
-                                if(flag==0)
-                                strcpy(hewan,sem2);
-                                if(flag==1)
-                                strcpy(nama,sem2);
-                                if(flag==2)
-                                strcpy(umur,sem2);
-                                
-                                flag++;
-                            }
-                        
- 
-                        //2b
-                        strcat(data,hewan);
-                        
-                        makedire(data);
-                        
-                        
-                
+                    		char umur[100];
+				for(sem1 = strtok_r(namapic, "_", &sem3) ; sem1 != NULL; sem1 = strtok_r(NULL, "_", &sem3))
+				{
+					int i;
+					char data[100];
+					strcpy(data, dest);
+                        		strcat(data, "/");
+                        		strcpy(copy1, ep->d_name);
+                        		// printf("%s\n", copy1);
+					
+					strcpy(data2, data);
+					strcpy(data3, data);
+					strcpy(copy2, ep->d_name);
+					strcpy(copy3, ep->d_name);
+					
+					int flag = 0;
+					for(sem2 = strtok_r(sem1, ";", &sem4); sem2 != NULL; sem2 = strtok_r(NULL, ";", &sem4))
+					{
+						if(flag == 0)
+                                			strcpy(hewan, sem2);
+                                		if(flag == 1)
+                                			strcpy(nama, sem2);
+                                		if(flag == 2)
+                                			strcpy(umur, sem2);
+						flag++;
+					}
+					// 2b
+					strcat(data, hewan);
+					makedire(data);
 ```
 Pada program ini awalnya mengecek file file yang terdapat dalam folder petshop. Kemudian nama file tersebut akan dipotong potong sampai sebelum tanda `;`. Untuk penamaan folder berdasarkan jenis hewan dapat diliat pada pemotongan sebelum `;` yang pertama. Berikut adalah hasil run program nya :
 
@@ -500,67 +470,50 @@ void cpy(char source[],char dest[])
     pid_t child_id;
     int fl;
  
-    child_id=fork();
+    child_id = fork();
  
-    if(child_id==0)
+    if(child_id == 0)
     {
-         char *movetofolder[]={"cp","-r", source, dest, NULL};
-                        execv("/bin/cp",movetofolder);
+    	char *movetofolder[]={"cp", "-r", source, dest, NULL}; 
+	execv("/bin/cp", movetofolder);
     }
- 
     else
     {
-        while ((wait(&fl))>0);
+        while((wait(&fl)) > 0);
     }
 }
 
-void ren(char pertama[],char terakhir[])
+void ren(char pertama[], char terakhir[])
 {
     pid_t child_id;
     int fl;
  
-    child_id=fork();
+    child_id = fork();
  
-    if(child_id==0)
+    if(child_id == 0)
     {
-        char *rename[]={"mv",pertama,terakhir,NULL};
-        execv("/bin/mv",rename);
+        char *rename[]={"mv", pertama, terakhir, NULL};
+        execv("/bin/mv", rename);
     }
- 
     else
     {
-        while ((wait(&fl))>0);
+        while((wait(&fl)) > 0);
     }
 }
-
-
 ```
 ```C
- //2c
+// 2c
+strcat(nama, ".jpg");
+strcat(data2, copy2);
+cpy(data2, data);
 
-                        
-                        strcat(nama,".jpg");
-                        
-                        strcat(data2,copy2);
-                        
-                    
-                        cpy(data2,data);
-                        
-                        //rename
-                        strcpy(data3,data);
-                        
-
-                        strcat(data3,"/");
-                        
-
-                        strcat(data3,copy2);
-                        
-
-                        strcat(data,"/");
-                        
-                        strcat(data,nama);
-                        
-                        ren(data3,data);
+// rename
+strcpy(data3, data);
+strcat(data3, "/");
+strcat(data3, copy2);
+strcat(data, "/");
+strcat(data, nama);
+ren(data3, data);
 ```
 Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",movetofolder)` dan untuk rename menggunakan fungsi ren dimana didalam fungsi tersebut menggunakan execv("/bin/mv",rename);. Nama file dapat diganti dengan mv. Berikut adalah hasil run program soal 2c
 
@@ -569,100 +522,72 @@ Untuk memindahkan folder menggunakan fungsi cpy yang memakai `execv("/bin/cp",mo
 ### Bagian d
 Karena dalam satu foto bisa terdapat lebih dari satu peliharaan maka foto harus di pindah ke masing-masing kategori yang sesuai. Contoh : foto dengan nama “dog;baro;1_cat;joni;2.jpg” dipindah ke folder “/petshop/cat/joni.jpg” dan “/petshop/dog/baro.jpg”. Untuk yang soal d mirip dengan soal yang B hanya saja string dipotong sebelum _ dengan `strtok`.
 ```C
-    for(sem1=strtok_r(namapic,"_",&sem3) ; sem1!=NULL; sem1=strtok_r(NULL,"_",&sem3))
-                    {
-                        int i;
-                       
-                        char data[100];
-                        strcpy(data,dest);
-                        strcat(data,"/");
-                        strcpy(copy1, ep->d_name);
-                        // printf("%s\n",copy1);
-
-                        strcpy(data2, data);
-                        
-
-                        strcpy(data3, data);
-                        
-
-                        strcpy(copy2, ep->d_name);
-                        
-
-                        strcpy(copy3, ep->d_name);
-                       
-                        int flag=0;
-                        for(sem2=strtok_r(sem1,";",&sem4);sem2!=NULL; sem2=strtok_r(NULL,";",&sem4))
-                            {
-                                if(flag==0)
-                                strcpy(hewan,sem2);
-                                if(flag==1)
-                                strcpy(nama,sem2);
-                                if(flag==2)
-                                strcpy(umur,sem2);
-                                
-                                flag++;
-                            }
-                        
- 
-                        //2b
-                        strcat(data,hewan);
-                        
-                        makedire(data);
-                        
-                        
-                        char textdir[100];
-                        
-                        stpcpy(textdir,data);
-                        strcat(textdir,"/keterangan.txt");
-                        char namatext[100];
-                        
-                        strcpy(namatext,nama);
-                    
-                        //2c
-                        
-                        strcat(nama,".jpg");
-                        
-                        strcat(data2,copy2);
-                        
-                    
-                        cpy(data2,data);
-                        
-                        //rename
-                        strcpy(data3,data);
-                        
-
-                        strcat(data3,"/");
-                        
-
-                        strcat(data3,copy2);
-                        
-
-                        strcat(data,"/");
-                        
-                        strcat(data,nama);
-                        
-                        ren(data3,data);
-                        
+for(sem1 = strtok_r(namapic, "_", &sem3) ; sem1 != NULL; sem1 = strtok_r(NULL, "_", &sem3)) 
+{
+	int i;
+	char data[100];
+	strcpy(data, dest);
+	strcat(data, "/");
+	strcpy(copy1, ep->d_name);
+	// printf("%s\n", copy1);
+	
+	strcpy(data2, data);
+	strcpy(data3, data);
+	strcpy(copy2, ep->d_name);
+	strcpy(copy3, ep->d_name);
+	
+	int flag = 0;
+	for(sem2 = strtok_r(sem1, ";", &sem4); sem2 != NULL; sem2 = strtok_r(NULL, ";", &sem4))
+	{
+		if(flag == 0)
+		strcpy(hewan, sem2);
+		if(flag == 1)
+			strcpy(nama, sem2);
+		if(flag == 2)
+			strcpy(umur, sem2);
+		flag++;
+	}
+	// 2b
+	strcat(data, hewan);
+	makedire(data);
+	char textdir[100];
+	
+	stpcpy(textdir, data);
+	strcat(textdir, "/keterangan.txt");
+	char namatext[100];
+	
+	strcpy(namatext, nama);
+	
+	// 2c
+	strcat(nama, ".jpg");
+	strcat(data2, copy2);
+	cpy(data2, data);
+	
+	// rename
+	strcpy(data3, data);
+	strcat(data3, "/");
+	strcat(data3, copy2);
+	strcat(data, "/");
+	strcat(data, nama);
+	ren(data3, data);             
 ```
 
 ### Bagian e
 Di setiap folder buatlah sebuah file "keterangan.txt" yang berisi nama dan umur semua peliharaan dalam folder tersebut. Format harus sesuai contoh. Jadi setiap kali pembacaan nama file akan dimasukkan ke suatu variabel untuk menyimpan nama dan menyimpan directory.
 ```C
-	char textdir[100];
-                        
-                        stpcpy(textdir,data);
-                        strcat(textdir,"/keterangan.txt");
-                        char namatext[100];
-                        
-                        strcpy(namatext,nama);
+char textdir[100];
+stpcpy(textdir, data);
+strcat(textdir, "/keterangan.txt");
 
-  			char  isi[300];
-                        
-                        sprintf(isi,"nama : %s \numur :%s tahun \n \n",namatext,umur);
-                       
-                        FILE *fptr=fopen(textdir,"a");
-                        fputs(isi,fptr);
-                        fclose(fptr);
+char namatext[100];
+strcpy(namatext, nama);
+char isi[300];
+
+sprintf(isi, "nama : %s \numur :%s tahun \n \n", namatext, umur);
+
+FILE *fptr = fopen(textdir, "a");
+fputs(isi, fptr);
+fclose(fptr);
 ```
 Berikut adalah hasil run program untuk soal E
 
@@ -670,7 +595,7 @@ Berikut adalah hasil run program untuk soal E
 
 ## Soal 3
 Ranora adalah mahasiswa Teknik Informatika yang saat ini sedang menjalani magang di perusahan ternama yang bernama “FakeKos Corp.”, perusahaan yang bergerak dibidang keamanan data. Karena Ranora masih magang, maka beban tugasnya tidak sebesar beban tugas pekerja tetap perusahaan. Di hari pertama Ranora bekerja, pembimbing magang Ranora memberi tugas pertamanya untuk membuat sebuah program. Disini kami menggunakan **Program Daemon** yakni sebagai berikut.
-```
+```C
 int main()
 {
     pid_t pid, sid;
@@ -706,7 +631,7 @@ int main()
 
 ### Bagian a
 Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai format timestamp [YYYY-mm-dd_HH:ii:ss]. Berikut adalah programnya, terletak di dalam fungsi loop yaitu **While**.
-```
+```C
     pid_t child_id;
     int status;
     child_id = fork();
@@ -728,7 +653,7 @@ Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah
     }
 ```
 Setelah itu, diakhir program while, kami meletakkan fungsi sebagai berikut agar loop berjalan sesuai perintah soal, yakni folder terbentuk setiap 40 detik.
-```
+```C
 sleep(40); // program berjalan setiap 40 detik
 ```
 Berikut adalah hasil direktori yang sudah terbentuk dengan nama sesuai format timestamp, dan juga akan terzip otomatis jika gambar di dalamnya sudah mencapai total 10 gambar.
@@ -736,7 +661,7 @@ Berikut adalah hasil direktori yang sudah terbentuk dengan nama sesuai format ti
 
 ### Bagian b
 Setiap direktori yang sudah dibuat diisi dengan 10 gambar yang di download dari https://picsum.photos/, dimana setiap gambar akan di download setiap 5 detik. Setiap gambar yang di download akan diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss] dan gambar tersebut berbentuk persegi dengan ukuran (n % 1000) + 50 pixel dimana n adalah detik Epoch Unix.
-```
+```C
 for(i = 1; i <= 10; i++) // total gambar yang di download adalah 10 gambar
 {
     time_t raw2;
@@ -763,12 +688,12 @@ for(i = 1; i <= 10; i++) // total gambar yang di download adalah 10 gambar
 
 ### Bagian c
 Setelah direktori telah terisi dengan 10 gambar, program tersebut akan membuat sebuah file “status.txt”, dimana didalamnya berisi pesan “Download Success” yang terenkripsi dengan teknik Caesar Cipher dan dengan shift 5. Caesar Cipher adalah Teknik enkripsi sederhana yang dimana dapat melakukan enkripsi string sesuai dengan shift/key yang kita tentukan. Misal huruf “A” akan dienkripsi dengan shift 4 maka akan menjadi “E”. Dan setelah file tersebut dibuat, direktori akan di zip dan direktori akan di delete, sehingga menyisakan hanya file zip saja.
-```
+```C
 // isi file status.txt
 char kata[50] = "Download Success";
 char word;
 ```
-```
+```C
 // caesar cipher
 for(int i = 0; i < strlen(kata); i++)
 {
@@ -797,7 +722,7 @@ for(int i = 0; i < strlen(kata); i++)
     }
 }
 ```
-```
+```C
 // untuk membuat file bernama status.txt
 char file[100];
 sprintf(file, "%s/status.txt", tanggal);
@@ -812,7 +737,7 @@ char *argv2[5] = {"zip", "-rm", zip, tanggal, NULL};
 execv("/usr/bin/zip", argv2);
 ```
 Karena menggunakan **Caesar Cipher** juga dengan shift 5, maka kalimat "Download Success" akan berubah menjadi "Itbsqtfi Xzhhjxx". Dimana 5 huruf setelah huruf D adalah I, 5 huruf setelah huruf o adalah t, dan seterusnya.
-```
+```C
 word += 5;
 ```
 Di dalam direktori yang sudah terzip, maka isinya akan ada 10 gambar + 1 file status.txt seperti berikut ini.
@@ -821,7 +746,7 @@ Di dalam direktori yang sudah terzip, maka isinya akan ada 10 gambar + 1 file st
 
 ### Bagian d
 Program tersebut akan men-generate sebuah program “Killer” yang executable, dimana program tersebut akan menterminasi semua proses program yang sedang berjalan dan akan menghapus dirinya sendiri setelah program dijalankan. Karena Ranora menyukai sesuatu hal yang baru, maka Ranora memiliki ide untuk program “Killer” yang dibuat nantinya harus merupakan **program bash**.
-```
+```C
 // 3d untuk membuat file killer.sh
 FILE *kill = fopen("killer.sh", "w");
 fprintf(kill, "#/bin/bash\n");
@@ -832,7 +757,7 @@ Berikut adalah file killer.sh, dimana jika dijalankan (bash killer.sh), semua pr
 
 ### Bagian e
 Program utama yang dibuat Ranora nantinya harus dapat dijalankan dalam dua mode. Untuk mengaktifkan mode pertama, program harus dijalankan dengan argumen -z, dan ketika dijalankan dalam mode pertama, program utama akan langsung menghentikan semua operasinya Ketika program Killer dijalankan. Sedangkan untuk mengaktifkan mode kedua, program harus dijalankan dengan argumen -x, dan ketika dijalankan dalam mode kedua, program utama akan berhenti namun membiarkan proses di setiap direktori yang masih berjalan hingga selesai (Direktori yang sudah dibuat akan mendownload gambar sampai selesai dan membuat file txt, lalu zip dan delete direktori).
-```
+```C
 // 3e
 // arg -z untuk menghentikan semua operasi
 if(strcmp(argv[1], "-z") == 0)
@@ -851,7 +776,7 @@ fprintf(kill, "rm killer.sh\n");
 fclose(kill);
 ```
 **NOTE :** Untuk no 3 d dan 3 e diletak di dalam satu fungsi void yang sama, yakni void killer, yang nantinya akan dipanggil di dalam int main, seperti berikut.
-```
+```C
 // untuk menjalankan argumen -z dan -x
 killer(argv, (int)getpid());
 ```
