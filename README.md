@@ -252,9 +252,10 @@ int main()
 }
 ```
 Berikut adalah foto hasil eksekusi program.
-
+![nazhwa punya](https://user-images.githubusercontent.com/74484044/115996728-b0bd1e80-a60a-11eb-9a50-b1bfdc42433f.png)
 Gambar 1. Eksekusi program pertama, set date 2021-04-09 16:21:59
 
+![nazhwa punya2](https://user-images.githubusercontent.com/74484044/115996730-b581d280-a60a-11eb-821a-0938f0476f2b.png)
 Gambar 2. Eksekusi program kedua, set date 2021-04-09 22:21:59
 Kesulitan yang dialami selama pengerjaan yakni tidak berhasilnya eksekusi program saat pembuatan yang ternyata dikarenakan 3 hal. Pertama, kesalahan peletakkan program yang kana dieksekusi sehingga program mengeksekusi command exit(EXIT_FAILURE) sebelum program dapat berjalan; kedua, kesalahan input tanggal saat proses set date dilakukan sehingga program tidak tereksekusi sama sekali; ketiga, kesalahan link yang menyebabkan proses download gagal.
 
