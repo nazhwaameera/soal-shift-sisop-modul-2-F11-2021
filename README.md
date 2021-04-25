@@ -39,13 +39,13 @@ int main()
     
     while(1)
     {
-        sleep(40);
+        sleep(40); // program berjalan setiap 40 detik
     }
 }
 ```
 
 ### Bagian a
-Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai timestamp [YYYY-mm-dd_HH:ii:ss]. Berikut adalah programnya, terletak di dalam fungsi loop --> **While**
+Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah direktori dengan nama sesuai timestamp [YYYY-mm-dd_HH:ii:ss]. Berikut adalah programnya, terletak di dalam fungsi loop yaitu **While**
 ```
     pid_t child_id;
     int status;
@@ -66,6 +66,10 @@ Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah
         char *argv[4] = {"mkdir", "-p", tanggal, NULL};
         execv("/bin/mkdir", argv);
     }
+```
+Setelah itu, diakhir program while, kami meletakkan fungsi sebagai berikut agar loop berjalan sesuai perintah soal, yakni folder terbentuk setiap 40 detik.
+```
+sleep(40); // program berjalan setiap 40 detik
 ```
 
 ### Bagian b
