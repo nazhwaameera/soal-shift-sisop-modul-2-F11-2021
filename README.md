@@ -22,6 +22,14 @@ Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebe
 ### Bagian f
 Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete(sehingga hanya menyisakan .zip)
 
+**NOTE :** Dari soal di atas dapat diketahui bahwa kita diminta untuk:
+1.	Membuat folder dengan nama Musyik, Fylm, dan Pyoto
+2.	Mendownload file-file yang dibutuhkan dari link yang sudah disediakan
+3.	Mengextract file yang telah didownload
+4.	Memindahkan file-file tersebut ke dalam folder yang telah dibuat
+5.	Membuat program berjalan otomatis pada 09 April 16:22
+6.	Membuat zip dari ketiga folder yang ada dan menghapus folder terkait
+
 ## Soal 2
 
 ## Soal 3
@@ -216,3 +224,5 @@ Berikut jika dijalankan dengan argumen -x dan setelah itu menjalankan bash kille
 <img width="624" alt="Screen Shot 2021-04-25 at 14 45 17" src="https://user-images.githubusercontent.com/74484044/115985199-eba45f80-a5d4-11eb-8129-d01d64ea9de7.png">
 
 Program yang tadinya masih dalam bentuk direktori, akan menyelesaikan proses nya dahulu hingga menjadi bentuk zip, walaupun kita sudah menjalankan bash killer.sh. Sedangkan jika kita jalankan dengan argumen -z, maka tidak ada hasil yang keluar karena program akan langsung berhenti memproses.
+
+Adapun kesulitan yang saya alami saat mengerjakan program ini ialah, gambar tidak berhasil di download serta adanya wget path yang salah.
