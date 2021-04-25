@@ -55,7 +55,7 @@ Ranora harus membuat sebuah program C yang dimana setiap 40 detik membuat sebuah
     char tanggal[40];
     time(&raw);
     timeinfo = localtime(&raw);
-    strftime(tanggal, sizeof(tanggal), "%Y-%m-%d_%H:%M:%S", timeinfo); // format penamaan folder sesuai dengan waktu saat folder tersebut berjalan
+    strftime(tanggal, sizeof(tanggal), "%Y-%m-%d_%H:%M:%S", timeinfo); // format penamaan folder sesuai dengan waktu saat folder tersebut terbentuk
         
     if(child_id < 0)
     {
