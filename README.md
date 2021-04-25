@@ -2,7 +2,7 @@
 Repository Modul 2 Kelompok F11
 
 ## Soal 1
-Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya pacar, namun sudah putus sebelum pacarana. Ketika dia galau memikirkan mantan, ia selalu menonton sebuah video untuk menghilangkan kesedihannya. Di lain hal, Steven anak yang tidak amat sangat super membenci matkul sisop, beberapa jam setelah diputus oleh pacarnya dia menemukan wanita lain bernama Stevany, namun Stevany berkebalikan dengan Steven karena menyukai sisop. Steven ingin terlihat jago matkul sisop demi menarik perhatian Stevany.
+Pada suatu masa, hiduplah seorang Steven yang hidupnya pas-pasan. Steven punya pacar, namun sudah putus sebelum pacaran. Ketika dia galau memikirkan mantan, ia selalu menonton sebuah video untuk menghilangkan kesedihannya. Di lain hal, Steven anak yang tidak amat sangat super membenci matkul sisop, beberapa jam setelah diputus oleh pacarnya dia menemukan wanita lain bernama Stevany, namun Stevany berkebalikan dengan Steven karena menyukai sisop. Steven ingin terlihat jago matkul sisop demi menarik perhatian Stevany.
 
 Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal-hal yang disukai Stevany. Steven ingin isi zipnya menjadi rapi dengan membuat folder masing-masing sesuai ekstensi. **(a)** Dikarenakan Stevany sangat menyukai huruf Y, Steven ingin nama folder-foldernya adalah Musyik untuk mp3, Fylm untuk mp4, dan Pyoto untuk jpg, **(b)** untuk music Steven mendownloadnya dari link di bawah, film dari link di bawah lagi, dan foto dari link di bawahnya juga. **(c)** Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilakukan extract setelah file didownload serta **(d)** memindahkannya ke dalam folder yang telah dibuat (hanya file yang dimasukkan). **(e)** Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany. **(f)** Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
 
@@ -13,6 +13,41 @@ Pada hari ulang tahun Stevany, Steven ingin memberikan Stevany zip berisikan hal
 4.	Memindahkan file-file tersebut ke dalam folder yang telah dibuat
 5.	Membuat program berjalan otomatis pada 09 April 16:22
 6.	Membuat zip dari ketiga folder yang ada dan menghapus folder terkait
+
+Dari apa yang sudah saya kerjakan sebelumnya, terdapat beberapa perubahan yakni.
+•	Link download ketiga file yang dibutuhkan menjadi
+```
+char *drive[] = {"https://drive.google.com/uc?id=1ZG8nRBRPquhYXq_sISdsVcXx5VdEgi-J&export=download","https://drive.google.com/uc?id=1ktjGgDkL0nNpY-vT7rT7O6ZI47Ke9xcp&export=download","https://drive.google.com/uc?id=1FsrAzb9B5ixooGUs0dGiBr-rC7TS9wTD&export=download"};
+```
+Perubahan ini dilakukan karena format yang sebelumnya salah (proses download tidak berhasil dilakukan).
+
+•	Penambahan variable ```char *dwnld[ ]``` yang menyimpan format nama file yang akan didownload. Format nama ini dibutuhkan untuk proses extract nantinya.
+```
+char *dwnld[] = {"mp3.zip", "mp4.zip", "jpg.zip"};
+```
+Penambahan variable di atas berdampak juga pada perubahan penulisan line yang menggunakan variable terkait, seperti perintah exec untuk extract.
+```
+char *argv[] = {"unzip", dwnld[i], NULL};
+execv("/usr/bin/unzip", argv);
+```
+
+•	Penyederhanaan fungsi function1( ) yang dipanggil 6 jam sebelum jam ulang tahun Stevany menjadi :
+```
+void function1()
+{
+	int i;
+	createDir();
+	for(i = 1; i <= 3; i++)
+	{
+		Download(i);
+		extractZip(i);
+		move(i);
+	}
+}
+```
+Pada versi function1() di atas, fork tidak dilakukan di setiap stepnya seperti pada versi function1() yang sebelumnya. Program semata melakukan iterasi sebanyak 3 kali dan melakukan 3 proses di setiap iterasinya.
+
+Dengan menggabungkan semua perubahan yang telah dilakukan, dihasikan program seperti berikut.
 
 ## Soal 2
 
