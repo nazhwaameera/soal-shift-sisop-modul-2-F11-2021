@@ -153,6 +153,8 @@ Karena menggunakan **Caesar Cipher** juga dengan shift 5, maka kalimat "Download
 word += 5;
 ```
 Di dalam direktori yang sudah terzip, maka isinya akan ada 10 gambar + 1 file status.txt seperti berikut ini.
+<img width="432" alt="Screen Shot 2021-04-25 at 14 26 55" src="https://user-images.githubusercontent.com/74484044/115984810-273e2a00-a5d3-11eb-86d6-584c3ba511ad.png">
+<img width="679" alt="Screen Shot 2021-04-25 at 14 27 07" src="https://user-images.githubusercontent.com/74484044/115984813-29a08400-a5d3-11eb-8f59-90966bd8e0f4.png">
 
 ### Bagian d
 Program tersebut akan men-generate sebuah program “Killer” yang executable, dimana program tersebut akan menterminasi semua proses program yang sedang berjalan dan akan menghapus dirinya sendiri setelah program dijalankan. Karena Ranora menyukai sesuatu hal yang baru, maka Ranora memiliki ide untuk program “Killer” yang dibuat nantinya harus merupakan **program bash**.
