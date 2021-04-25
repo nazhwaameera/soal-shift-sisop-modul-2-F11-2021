@@ -164,6 +164,7 @@ FILE *kill = fopen("killer.sh", "w");
 fprintf(kill, "#/bin/bash\n");
 ```
 Berikut adalah file killer.sh, dimana jika dijalankan (bash killer.sh), semua proses akan langsung berhenti dan file killer.sh tersebut akan menghapus dirinya sendiri.
+
 <img width="709" alt="Screen Shot 2021-04-25 at 14 35 45" src="https://user-images.githubusercontent.com/74484044/115984922-a16eae80-a5d3-11eb-87de-5935704916f8.png">
 
 ### Bagian e
