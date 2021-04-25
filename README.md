@@ -30,6 +30,20 @@ Steven tidak ingin isi folder yang dibuatnya berisikan zip, sehingga perlu dilak
 
 ### Bagian e
 Untuk memudahkan Steven, ia ingin semua hal di atas berjalan otomatis 6 jam sebelum waktu ulang tahun Stevany.
+```
+void function1()
+{
+	int i;
+	createDir();
+	for(i = 1; i <= 3; i++)
+	{
+		Download(i);
+		extractZip(i);
+		move(i);
+	}
+}
+```
+Pada versi function1() di atas, fork tidak dilakukan di setiap stepnya seperti pada versi function1() yang sebelumnya. Program semata melakukan iterasi sebanyak 3 kali dan melakukan 3 proses di setiap iterasinya.
 
 ### Bagian f
 Setelah itu, pada waktu ulang tahunnya, semua folder akan dizip dengan nama Lopyu_Stevany.zip dan semua folder akan di delete sehingga hanya menyisakan .zip saja.
